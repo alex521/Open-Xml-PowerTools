@@ -64,6 +64,8 @@ namespace OpenXmlPowerTools
 
         public static void AssembleFormatting(WordprocessingDocument wDoc, FormattingAssemblerSettings settings)
         {
+            if(wDoc.MainDocumentPart.StyleDefinitionsPart == null)
+                return;
             FormattingAssemblerInfo fai = new FormattingAssemblerInfo();
             XDocument sXDoc = wDoc.MainDocumentPart.StyleDefinitionsPart.GetXDocument();
             XElement defaultParagraphStyle = sXDoc
